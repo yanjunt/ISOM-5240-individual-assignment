@@ -8,7 +8,7 @@ from gtts import gTTS
 st.title("story telling demo")
 st.write("welcome to a story telling app for children")
 
-uploaded_image=st.feile_uploader("Upload an image",type=["jpg","jpeg","png"])
+uploaded_image=st.file_uploader("Upload an image",type=["jpg","jpeg","png"])
 @st.cache_resource
 def load_captioner():
     proc = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
