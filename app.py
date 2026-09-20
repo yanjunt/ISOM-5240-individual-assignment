@@ -92,14 +92,13 @@ def truncate_to_sentence(text, max_words=100, min_words=50):
     # If truncation makes the story shorter than 50 words,
     # add a short child-friendly ending.
     if len(text.split()) < min_words:
-        text += " They played happily together."
+        text += " What a happy day."
 
     return text
 
 
 def caption_to_story(caption, generator, tokenizer):
-    # Create an instruction that tells the language model exactly
-    # what type of story it should generate.
+    # Create an instruction that tells the language model exactly what type of story it should generate.
     messages = [
         {
             "role": "user",
@@ -124,7 +123,7 @@ def caption_to_story(caption, generator, tokenizer):
         add_generation_prompt=True,
     )
 
-    # Generate the children's story with controlled sampling settings.
+    # Generate the children's story with controlled sampling settings.The temprature has been tested and selected. And penalty added to avoid repetition.
     result = generator(
         formatted,
         max_new_tokens=120,
@@ -183,8 +182,7 @@ def main():
     # Display the main application title and instructions.
     st.title("📖 Kids Picture Storyteller")
     st.write(
-        "Upload a picture. The app creates a 50-100 word "
-        "children's story and reads it aloud."
+        "Upload a picture. The app creates a 50-100 words children's story and reads it aloud."
     )
 
     # Allow users to upload JPG, JPEG, or PNG images.
